@@ -19,11 +19,17 @@ add constraint unique_NameResults
 unique (imageName);
 
 --Functions
-CREATE OR ALTER PROCEDURE addImage @imageName varchar(40), @image text 
-AS BEGIN
-insert into images(imageName,dateAdded,image) values (@imageName, CURRENT_TIMESTAMP, @image);
-END;
-GO
+DELIMITER &&
+CREATE PROCEDURE addImage(in image_Name varchar(40), in image_data text)
+BEGIN
+insert into images(imageName,dateAdded,image) values (image_Name, CURRENT_TIMESTAMP, image_data);
+END&&
+
+DELIMITER &&
+CREATE PROCEDURE viewImages()
+BEGIN
+SELECT * FROM images;
+END&&
 
 CREATE OR ALTER PROCEDURE updateImage @imageName varchar(40), @image text 
 AS BEGIN
@@ -49,6 +55,7 @@ AS BEGIN
 update results set results = @results, dateModified = CURRENT_TIMESTAMP where imageName = @imageName;
 END;
 GO
+
 /*
 select * from images;
 select * from results;
