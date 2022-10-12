@@ -2,6 +2,7 @@ import { Component, VERSION, ViewEncapsulation } from "@angular/core";
 import lgZoom from 'lightgallery/plugins/zoom';
 import { BeforeSlideDetail } from 'lightgallery/lg-events';
 
+
 @Component({
   selector: "my-app",
   templateUrl: "./app.component.html",
