@@ -10,6 +10,7 @@ import { BeforeSlideDetail } from 'lightgallery/lg-events';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
+  title = 'Angular Material 12 Image Upload with Preview';
   name = "Angular " + VERSION.major;
   settings = {
     counter: false,
