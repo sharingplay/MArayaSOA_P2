@@ -12,6 +12,7 @@ import { BeforeSlideDetail } from 'lightgallery/lg-events';
 export class AppComponent {
   title = 'Angular Material 12 Image Upload with Preview';
   name = "Angular " + VERSION.major;
+  fileSelected = "No file selected";
   settings = {
     counter: false,
     plugins: [lgZoom]
@@ -20,4 +21,20 @@ export class AppComponent {
     const { index, prevIndex } = detail;
     console.log(index, prevIndex);
   };
+
+  upload(){
+
+      console.log(this.fileSelected)
+
+  }
+
+  onFileSelect(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.fileSelected = e.target.result;
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
 }
