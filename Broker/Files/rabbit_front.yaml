@@ -14,7 +14,7 @@ spec:
     port: 5000
     targetPort: 5000
 
---
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -38,8 +38,6 @@ spec:
         ports:
         - containerPort: 5000
         env:
-        - name: REACT_APP_BACKEND 
-            value: "127.0.0.1"
         - name: RABBIT_HOST 
           value: "rabbitmq-0.rabbitmq.rabbits.svc.cluster.local"
         - name: RABBIT_PORT

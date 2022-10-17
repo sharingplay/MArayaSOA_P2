@@ -14,7 +14,7 @@ spec:
     port: 6000
     targetPort: 6000
 
---
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -33,13 +33,11 @@ spec:
     spec:
       containers:
       - name: db-service
-        image: db
+        image: marivr12/dataBase
         imagePullPolicy: Always
         ports:
         - containerPort: 6000
         env:
-        - name: REACT_APP_BACKEND 
-            value: "127.0.0.1"
         - name: RABBIT_HOST 
           value: "rabbitmq-0.rabbitmq.rabbits.svc.cluster.local"
         - name: RABBIT_PORT
