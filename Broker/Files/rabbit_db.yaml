@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
       - name: db-service
-        image: marivr12/dataBase
+        image: marivr12/database
         imagePullPolicy: Always
         ports:
         - containerPort: 6000

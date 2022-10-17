@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
       - name: front-service
-        image: front
+        image: https://github.com/sharingplay/MArayaSOA_P2/tree/main/webPage
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
