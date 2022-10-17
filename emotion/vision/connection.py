@@ -39,7 +39,7 @@ def received(ch, method, properties, body):
     publisher_thread = threading.Thread(target=publisher, args=(message,))
     publisher_thread.start()
 
-def process_consumer():
+def consumer():
     """
     Funcion encargada de crear la conexion con el broker para obtener informacion
     Input: 
