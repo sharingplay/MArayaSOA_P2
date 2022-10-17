@@ -1,13 +1,17 @@
-import google.auth
+import google.auth, io
 from google.cloud import vision
 
 credentials, project = google.auth.default()
 
 
 
-def analyze_emotion(image_bytes):
+def analyze_emotion():
     client = vision.ImageAnnotatorClient()
-    image = vision.Image(content=image_bytes)
+    image_path = f'.\sad.jpg'
+    with io.open(image_path, 'rb') as image_file:
+        content = image_file.read()
+    #image = vision.Image(content=image_bytes)
+    image = vision.Image(content=content)
     response = client.face_detection(image=image)
     #respuesta del sentimiento
     face_annotation = response.face_annotations
@@ -34,6 +38,7 @@ def analyze_emotion(image_bytes):
         for person in answer:
             if person != "no se sabe":
                 resp += person + ", "
+    print(resp)
     return resp
 
 analyze_emotion()
