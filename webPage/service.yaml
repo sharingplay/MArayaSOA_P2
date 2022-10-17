@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service-label-key: service-label-value
+  name: soa-p2-service
+spec:
+  type: ClusterIP
+  ports:
+    - name: soa-p2-service-port
+      port: 90
+      targetPort: 80
+      protocol: TCP
+  selector:
+    deployment-label-key: soa-p2-label-key
