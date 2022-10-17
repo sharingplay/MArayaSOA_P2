@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: emotions-service
-        image: emotions
+        image: marivr12/emotion:v10 
         imagePullPolicy: Always
         ports:
         - containerPort: 80

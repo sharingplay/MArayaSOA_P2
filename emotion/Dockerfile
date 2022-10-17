@@ -7,9 +7,9 @@ RUN apt install python3-pip -y
 
 WORKDIR /emotions-app
 
-COPY requirements.txt .
+COPY requirement.txt .
 
-RUN pip3 install -r requirements.txt
+RUN pip3 install -r requirement.txt
 
 COPY ./vision ./vision
 
