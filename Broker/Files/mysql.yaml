@@ -32,28 +32,28 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: db-service
+  name: mysql
 spec:
   selector:
     matchLabels:
-      app: db-service
+      app: mysql
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: db-service
+        app: mysql
     spec:
       containers:
-        - image: marivr12/database:v10
-          name: db-service
+        - image: sepelion/database:v10
+          name: mysql
           imagePullPolicy: Always
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: password
           ports:
             - containerPort: 3306
-              name: db-service
+              name: mysql
           volumeMounts:
             - name: mysql-persistent-storage
               mountPath: /var/lib/mysql
@@ -67,10 +67,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: db-service
+  name: mysql
 spec:
   ports:
     - port: 3306
   selector:
-    app: db-service
+    app: mysql
   clusterIP: None
