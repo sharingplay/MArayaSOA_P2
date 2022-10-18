@@ -19,6 +19,8 @@ def analyze_emotion(image_bytes):
     #respuesta del sentimiento
     face_annotation = response.face_annotations
     # Toma solo la primera cara
+    if(len(face_annotation)<1):
+        return
     analist = face_annotation[0]
     #Compara el resultado para cada sentimiento
     #El estado varia de 0 a 5
