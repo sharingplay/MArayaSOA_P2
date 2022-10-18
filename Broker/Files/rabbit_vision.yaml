@@ -16,10 +16,10 @@ spec:
     spec:
       containers:
       - name: emotions-service
-        image: marivr12/emotion:v10 
+        image: marivr12/emotion:v11 
         imagePullPolicy: Always
         ports:
-        - containerPort: 80
+        - containerPort: 3850
         env:
         - name: RABBIT_HOST 
           value: "rabbitmq-0.rabbitmq.rabbits.svc.cluster.local"
@@ -39,5 +39,5 @@ spec:
     app: emotions-service
   ports:
   - protocol: TCP
-    port: 80
+    port: 3850
     targetPort: http

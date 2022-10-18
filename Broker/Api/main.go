@@ -23,7 +23,7 @@ func main() {
 	consume()
 }
 
-func consume() {
+func consume() {	
 
 	conn, err := amqp.Dial("amqp://emotion:emotion@" + rabbit_host + ":" + rabbit_port +"/")
 
