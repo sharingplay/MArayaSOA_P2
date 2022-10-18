@@ -13,4 +13,4 @@ RUN pip3 install -r requirement.txt
 
 COPY ./vision ./vision
 
-CMD ["python3", "./vsion/main.py"]
+CMD ["python3", "./vision/main.py"]
