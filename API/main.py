@@ -47,11 +47,11 @@ class Images(Resource):
             resp = jsonify(data)
             '''
 
-            f = open('images.json')
+            f = open('API\images.json')
             data = json.load(f)
 
             bytes = re.search(",.*", data["images"][1]["image"]).group().replace(",", "")
-            print(bytes)
+            #print(bytes)
 
 
             vision.analyze_emotion(data["images"][1]["image"])
