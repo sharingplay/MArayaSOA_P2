@@ -16,9 +16,8 @@ Kubernetes Engine. It’s **easy to deploy with little to no configuration**.
 
 ## Screenshots
 
-| Home Page                                                                                                         | Checkout Screen                                                                                                    |
-| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| [![Screenshot of store homepage](./docs/img/online-boutique-frontend-1.png)](./docs/img/online-boutique-frontend-1.png) | [![Screenshot of checkout screen](./docs/img/online-boutique-frontend-2.png)](./docs/img/online-boutique-frontend-2.png) |
+ Home Page                                                                                                          
+ [![Screenshot of store homepage](./docu/webapp.png)](./docu/webapp.png) 
 
 ## Quickstart (GKE)
 
@@ -66,7 +65,7 @@ languages that talk to each other over some api.
 The architecture is based on broker, that means that the meassage is asynchronous using rabbitMQ
 
 [![Architecture of
-microservices](./docs/img/architecture-diagram.png)](./docs/img/architecture-diagram.png)
+microservices](./docu/Arquitectura.png)](./docu/Arquitectura.png)
 
 
 | Service                                              | Language      | Description                                                                                                                       |
