@@ -1,7 +1,7 @@
-import pika
 import threading
 import json
 import os
+import pika
 from vision import analyze_emotion
 
 def received(ch, method, properties, body):
@@ -11,8 +11,7 @@ def received(ch, method, properties, body):
         -ch: type
         -method: type
         -properties: type
-        -body:string 
-
+        -body:string
     Output:
         -mensaje: Json
     """
@@ -38,11 +37,10 @@ def received(ch, method, properties, body):
     # envia el dato de la publicacion
     publisher_thread = threading.Thread(target=publisher, args=(message,))
     publisher_thread.start()
-
 def consumer():
     """
     Funcion encargada de crear la conexion con el broker para obtener informacion
-    Input: 
+    Input:
         -la cola de rabbit
     Output:
         - la conexion
@@ -55,16 +53,15 @@ def consumer():
     connection_parameters = pika.ConnectionParameters(host=host, port=port)
     connection = pika.BlockingConnection(connection_parameters)
     # Canal de conexion default
-    channel = connection.channel() 
+    channel = connection.channel()
     # Declaracion del queue
     channel.queue_declare(queue=queue_consumer)
     channel.basic_consume(queue=queue_consumer, auto_ack=True, on_message_callback=received)
     print("Se inicia la conexion.....")
-    channel.start_consuming()  
-
+    channel.start_consuming()
 def publisher(message_body):
     """
-    Crea una conexion pero de publicacion 
+    Crea una conexion pero de publicacion
     Input:
         - Message _body: type
     Output:
