@@ -9,7 +9,10 @@ from sqlalchemy import text
 from flaskext.mysql import MySQL
 import os
 import json
+import google.auth
+import vision
 
+import re
 
 app = Flask(__name__)
 api = Api(app)
@@ -43,10 +46,15 @@ class Images(Resource):
             data = cursor.fetchall()
             resp = jsonify(data)
             '''
+
             f = open('images.json')
             data = json.load(f)
-            print(f)
-            print(data)
+
+            bytes = re.search(",.*", data["images"][1]["image"]).group().replace(",", "")
+            print(bytes)
+
+
+            vision.analyze_emotion(data["images"][1]["image"])
 
             return data
         except Exception as e:
@@ -81,6 +89,10 @@ class status(Resource):
 
 api.add_resource(Images, '/Images')
 api.add_resource(status, '/')
+credentials, project = google.auth.default()
+
 
 if __name__ == '__main__':
+
+
     app.run()
