@@ -1,6 +1,7 @@
 import { Component, VERSION, ViewEncapsulation } from "@angular/core";
 import lgZoom from 'lightgallery/plugins/zoom';
 import { BeforeSlideDetail } from 'lightgallery/lg-events';
+import {UploaderService} from "./services/uploader.service";
 
 
 @Component({
@@ -17,14 +18,14 @@ export class AppComponent {
     counter: false,
     plugins: [lgZoom]
   };
+  service: UploaderService;
   onBeforeSlide = (detail: BeforeSlideDetail): void => {
     const { index, prevIndex } = detail;
     console.log(index, prevIndex);
   };
 
   upload(){
-
-      console.log(this.fileSelected)
+      console.log(this.service.getImages());
 
   }
 

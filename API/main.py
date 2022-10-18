@@ -32,7 +32,7 @@ def output_json(data, code, headers=None):
     return json_response(data_=data, headers_=headers, status_=code)
 
 
-class EmployeesResults(Resource):
+class Images(Resource):
     def get(self):
         try:
             '''
@@ -79,7 +79,7 @@ class status(Resource):
             return {'data': 'An Error Occurred during fetching Api'}
 
 
-api.add_resource(EmployeesResults, '/Employees')
+api.add_resource(Images, '/Images')
 api.add_resource(status, '/')
 
 if __name__ == '__main__':

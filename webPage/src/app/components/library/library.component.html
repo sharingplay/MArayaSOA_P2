@@ -1,5 +1,6 @@
 <div style="padding: 1%">
     <lightgallery [settings]="settings" [onBeforeSlide]="onBeforeSlide">
+        <!--
         <a data-lg-size="480-475-480, 800-791-800, 1406-1390" class="gallery-item" style="padding: 1%"
            data-src="https://images.unsplash.com/photo-1581894158358-5ecd2c518883?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1406&q=80"
            data-responsive="https://images.unsplash.com/photo-1581894158358-5ecd2c518883?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=480&q=80 480, https://images.unsplash.com/photo-1581894158358-5ecd2c518883?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80 800"
@@ -23,5 +24,35 @@
             <img class="img-responsive"
                  src="https://images.unsplash.com/photo-1584592740039-cddf0671f3d4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=240&q=80" />
         </a>
+        -->
+
+        <a *ngFor="let image of images" data-lg-size="480-480-480, 800-800-800, 1400-1400" data-pinterest-text="Pin it3" style="padding: 1%"
+           data-tweet-text="share on twitter 4" class="gallery-item"
+           data-src="{{image.image}}"
+           data-responsive="{{image.image}} 480, {{image.image}} 800"
+           data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@katherine_xx11' >Katherine Gu </a></h4><p> For all those years we were alone and helpless.</p>">
+            <img class="img-responsive"
+                 src="{{image.image}}" />
+        </a>
+
+        <a *ngFor="let image of images" data-lg-size="480-480-480, 800-800-800, 1400-1400" data-pinterest-text="Pin it3" style="padding: 1%"
+           data-tweet-text="share on twitter 4" class="gallery-item"
+           data-src="{{image.image}}"
+           data-responsive="{{image.image}} 480, {{image.image}} 800"
+           data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@katherine_xx11' >Katherine Gu </a></h4><p> For all those years we were alone and helpless.</p>">
+            <img class="img-responsive"
+                 src="{{image.image}}" />
+        </a>
+        <a *ngFor="let image of images" data-lg-size="480-480-480, 800-800-800, 1400-1400" data-pinterest-text="Pin it3" style="padding: 1%; margin-bottom: 1%"
+           data-tweet-text="share on twitter 4" class="gallery-item"
+           data-src="{{image.image}}"
+           data-responsive="{{image.image}} 480, {{image.image}} 800"
+           data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@katherine_xx11' >Katherine Gu </a></h4><p> For all those years we were alone and helpless.</p>">
+            <img class="img-responsive"
+                 src="{{image.image}}" />
+        </a>
+
+
+
     </lightgallery>
 </div>
