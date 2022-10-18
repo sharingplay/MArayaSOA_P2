@@ -45,7 +45,7 @@ spec:
         app: db-service
     spec:
       containers:
-        - image: marivr12/database:v10
+        - image: sepelion/database:v10
           name: db-service
           imagePullPolicy: Always
           env:

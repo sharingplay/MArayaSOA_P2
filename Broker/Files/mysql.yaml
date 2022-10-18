@@ -45,7 +45,7 @@ spec:
         app: mysql
     spec:
       containers:
-        - image: sepelion/database:v10
+        - image: sepelion/database:v11
           name: mysql
           imagePullPolicy: Always
           env:

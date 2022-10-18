@@ -70,8 +70,6 @@ BEGIN
 update results set results = image_results, dateModified = CURRENT_TIMESTAMP where imageName = image_Name;
 END&&
 
-execute addImage @imageName = 'imagen de prueba', @image = 'texto de prueba';
-
 /*
 select * from images;
 select * from results;
