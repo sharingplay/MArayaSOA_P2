@@ -13,17 +13,20 @@ def analyze_emotion(image_bytes):
     Output:
         -resp: string
     '''
+    print("1")
     client = vision.ImageAnnotatorClient()
     image = vision.Image(content=image_bytes)
     response = client.face_detection(image=image)
     #respuesta del sentimiento
     face_annotation = response.face_annotations
     # Toma solo la primera cara
+    print("2")
     if(len(face_annotation)<1):
         return
     analist = face_annotation[0]
     #Compara el resultado para cada sentimiento
     #El estado varia de 0 a 5
+    print("3")
     answer = ["no se sabe"]
     if (analist.detection_confidence >= 4) and (analist.detection_confidence <= 5):
         answer += ["confiado"]

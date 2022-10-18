@@ -20,9 +20,6 @@ func enableCors(w* http.ResponseWriter) {
 }
 
 func createNewRecord(msg []byte) {
-	// w.Header().Add("Content-Type", "JSON")
-	// reqBody, _ := ioutil.ReadAll(r.Body)
-	// err := json.Unmarshal(reqBody, &newRecord)
 	var newRecord record
 	err := json.Unmarshal(msg, &newRecord)
 

@@ -50,11 +50,11 @@ class Images(Resource):
             f = open('API\images.json')
             data = json.load(f)
 
-            bytes = re.search(",.*", data["images"][1]["image"]).group().replace(",", "")
+            bytes = re.search(",.*", data["images"][0]["image"]).group().replace(",", "")
             #print(bytes)
 
 
-            vision.analyze_emotion(data["images"][1]["image"])
+            vision.analyze_emotion(bytes)
 
             return data
         except Exception as e:
