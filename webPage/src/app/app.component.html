@@ -1,9 +1,9 @@
 <app-top-bar></app-top-bar>
 <div style="padding-left: 1%">
-<label class="form-label" for="customFile">Default file input example</label>
-<input type="file" class="form-control" id="customFile"  (change)="onFileSelect($event.target)"/>
+<label class="form-label" for="customFile">Seleccione un archivo</label>
+<input type="file" class="form-control" accept="image/png, image/jpeg" id="customFile"  (change)="onFileSelect($event.target)"/>
 
-    <button class="btn bg-primary" style="margin-top: 1%" (click)="upload()">Upload</button>
+    <button class="btn bg-primary" style="margin-top: 1%" (click)="uploadFiles()">Upload</button>
 
     <app-library></app-library>
 </div>

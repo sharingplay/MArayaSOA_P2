@@ -12,6 +12,7 @@ data:
     cluster_formation.k8s.host = kubernetes.default.svc.cluster.local
     cluster_formation.k8s.address_type = hostname
     cluster_formation.node_cleanup.only_log_warning = true
+    management.cors.allow_origins.1 = *
     ##cluster_formation.peer_discovery_backend = rabbit_peer_discovery_classic_config
     ##cluster_formation.classic_config.nodes.1 = rabbit@rabbitmq-0.rabbitmq.rabbits.svc.cluster.local
     ##cluster_formation.classic_config.nodes.2 = rabbit@rabbitmq-1.rabbitmq.rabbits.svc.cluster.local
