@@ -29,6 +29,8 @@ spec:
           value: "adding"
         - name: RABBIT_ALL_IMAGES_QUEUE
           value: "storage"
+        - name: RABBIT_PRODUCER_QUEUE
+          value: "all_data"
 ---
 apiVersion: v1
 kind: Service

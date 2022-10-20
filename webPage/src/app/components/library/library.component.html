@@ -1,15 +1,49 @@
 
-<hr class="mt-2 mb-5">
-
-<div class="row text-center text-lg-start">
-<div *ngFor="let image of images" class="col-lg-3 col-md-4 col-6">
-  <a class="d-block mb-4 h-100">
-      <div class="scaled">
-        <img class="img-fluid img-thumbnail" src="{{image.image}}" alt="">
-          Nombre: {{image.name}}. Estado: {{image.result}}
-      </div>
-
-  </a>
-</div>
-
-</div>
+<body>
+    <section class="gallery-block cards-gallery">
+        <div class="container" style="width: 90%">
+            <div class="heading">
+                <h2>Gallery</h2>
+            </div>
+            <div class="row" >
+                <div class="col-lg-6 col-lg-4">
+                    <div class="card border-0 transform-on-hover">
+                        <a class="lightbox" href="https://lamenteesmaravillosa.com/wp-content/uploads/2015/12/nina-feliz-1024x683.jpg">
+                            <img src="https://lamenteesmaravillosa.com/wp-content/uploads/2015/12/nina-feliz-1024x683.jpg" alt="Card Image" class="card-img-top">
+                        </a>
+                        <div class="card-body">
+                            <h6><a href="#">Niña</a></h6>
+                            <p class="text-muted card-text">Sentimiento: Felicidad</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-lg-4">
+                    <div class="card border-0 transform-on-hover">
+                        <a class="lightbox" href="https://www.vitalcoachingbarcelona.com/wp-content/uploads/2017/06/tristeza.jpg">
+                            <img src="https://www.vitalcoachingbarcelona.com/wp-content/uploads/2017/06/tristeza.jpg" alt="Card Image" class="card-img-top">
+                        </a>
+                        <div class="card-body">
+                            <h6><a href="#">Mujer</a></h6>
+                            <p class="text-muted card-text">Sentimiento: Tristeza</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-lg-4">
+                    <div class="card border-0 transform-on-hover">
+                        <a class="lightbox" href="https://media.lmneuquen.com/p/410d97b89a573e44db378f26bd2ee1b7/adjuntos/195/imagenes/000/283/0000283880/las-cejas-la-nariz-y-la-boca-son-piezas-clave-la-cara-enojado.jpg">
+                            <img src="https://media.lmneuquen.com/p/410d97b89a573e44db378f26bd2ee1b7/adjuntos/195/imagenes/000/283/0000283880/las-cejas-la-nariz-y-la-boca-son-piezas-clave-la-cara-enojado.jpg" alt="Card Image" class="card-img-top">
+                        </a>
+                        <div class="card-body">
+                            <h6><a href="#">Señor</a></h6>
+                            <p class="text-muted card-text">Sentimiento: Enojo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+<script>
+    baguetteBox.run('.cards-gallery', { animation: 'slideIn'});
+</script>
+</body>
