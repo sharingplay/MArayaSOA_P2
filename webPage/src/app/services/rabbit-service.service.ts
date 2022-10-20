@@ -32,7 +32,7 @@ export class RabbitServiceService {
     return <JSON><unknown>
         {
             "properties": {"delivery_mode": 2},
-            "routing_key": "images_test",
+            "routing_key": "adding",
             "content_type": "application/json",
             "payload":`{name: ${ name }, image: ${ bytes }`,
             "payload_encoding": "string"
