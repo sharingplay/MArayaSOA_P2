@@ -1,34 +1,38 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend-service
-  labels:
-    app: backend-service
 spec:
   selector:
     matchLabels:
       app: backend-service
+      tier: backend-service
+      track: stable
   replicas: 1
   template:
     metadata:
       labels:
         app: backend-service
+        tier: backend-service
+        track: stable
     spec:
       containers:
-      - name: backend-service
-        image: marivr12/backend:v11
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 3600
-        env:
-        - name: RABBIT_HOST 
-          value: "rabbitmq-0.rabbitmq.rabbits.svc.cluster.local"
-        - name: RABBIT_PORT
-          value: "5672"
-        - name: RABBIT_CONSUMER_QUEUE
-          value: "storage"
-        - name: RABBIT_PRODUCER_QUEUE
-          value: "all_data"
+        - name: backend-service
+          image: marivr12/backend:v11
+          ports:
+            - name: http
+              containerPort: 3600
+          env:
+          - name: RABBIT_HOST 
+            value: "rabbitmq-0.rabbitmq.rabbits.svc.cluster.local"
+          - name: RABBIT_PORT
+            value: "5672"
+          - name: RABBIT_CONSUMER_QUEUE
+            value: "storage"
+          - name: RABBIT_PRODUCER_QUEUE
+            value: "all_data"
+
 ---
 apiVersion: v1
 kind: Service
@@ -37,7 +41,11 @@ metadata:
 spec:
   selector:
     app: backend-service
+    tier: backend-service
   ports:
   - protocol: TCP
     port: 3600
     targetPort: http
+
+
+

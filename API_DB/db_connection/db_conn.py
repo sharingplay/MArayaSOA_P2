@@ -3,9 +3,6 @@ import json
 import os
 import pika
 import mysql.connector
-
-
-
 def received(ch, method, properties, body):
     """
     Funcion encargada de recibir los mensajes y ejecutarlos
@@ -34,7 +31,6 @@ def received(ch, method, properties, body):
     db_conn.execute(s_query)
     db_conn.close()
     db.close()
-
     db_conn = db.cursor()
     s_query = "call addResult("+str(employee_name)+","+str(employee_emotion)+");"
     db_conn.execute(s_query)
@@ -62,19 +58,10 @@ def consumer():
     Output:
         - la conexion
     """
-    db = mysql.connector.connect(host = 'mysql', user = 'root', password = 'root', port = 3306)
-    db_conn = db.cursor()
-    s_query = "call viewAll();"
-    db_conn.execute(s_query)
-    for a_row in db_conn:
-        print(a_row)
-    db_conn.close()
-    db.close()
-
     # Variables de rabbit
     host = os.environ['RABBIT_HOST']
     port = os.environ['RABBIT_PORT']
-    queue_consumer = os.environ['RABBIT_PRODUCER_QUEUE']
+    queue_consumer = os.environ['RABBIT_CONSUMER_QUEUE']
     #conexion con el broker
     connection_parameters = pika.ConnectionParameters(host=host, port=port)
     connection = pika.BlockingConnection(connection_parameters)
