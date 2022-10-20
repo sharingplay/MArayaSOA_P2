@@ -70,6 +70,14 @@ BEGIN
 update results set results = image_results, dateModified = CURRENT_TIMESTAMP where imageName = image_Name;
 END&&
 
+DELIMITER &&
+CREATE PROCEDURE viewAll()
+BEGIN
+select image.imageName, results.results, results.dateModified, image.text
+from images
+inner join results on image.imageName = results.imageName;
+END&&
+
 /*
 select * from images;
 select * from results;
