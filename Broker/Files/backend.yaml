@@ -1,48 +1,43 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: db-service
-  labels:
-    app: db-service
-spec:
-  type: LoadBalancer
-  selector:
-    app: db-service
-  ports:
-  - protocol: TCP
-    name: http
-    port: 6000
-    targetPort: 6000
-
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: db-service
+  name: backend-service
   labels:
-    app: db-service
+    app: backend-service
 spec:
   selector:
     matchLabels:
-      app: db-service
+      app: backend-service
   replicas: 1
   template:
     metadata:
       labels:
-        app: db-service
+        app: backend-service
     spec:
       containers:
-      - name: db-service
-        image: marivr12/database
+      - name: backend-service
+        image: marivr12/backend:v11
         imagePullPolicy: Always
         ports:
-        - containerPort: 6000
+        - containerPort: 3600
         env:
         - name: RABBIT_HOST 
           value: "rabbitmq-0.rabbitmq.rabbits.svc.cluster.local"
         - name: RABBIT_PORT
           value: "5672"
         - name: RABBIT_CONSUMER_QUEUE
-          value: "images"
+          value: "storage"
         - name: RABBIT_PRODUCER_QUEUE
-          value: "db"
+          value: "all_data"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  selector:
+    app: backend-service
+  ports:
+  - protocol: TCP
+    port: 3600
+    targetPort: http

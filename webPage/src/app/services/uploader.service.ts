@@ -7,9 +7,10 @@ import { Observable } from 'rxjs';
   providedIn: "root"
 })
 export class UploaderService {
-  private baseUrl = 'http://localhost:8080';
+  private baseUrl = 'http://127.0.0.1:5000';
 
   constructor(private http: HttpClient) { }
+
 
   upload(file: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
@@ -22,6 +23,10 @@ export class UploaderService {
     });
 
     return this.http.request(req);
+  }
+
+  getImages(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/Images`);
   }
 
   getFiles(): Observable<any> {

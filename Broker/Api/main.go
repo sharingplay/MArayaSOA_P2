@@ -19,13 +19,33 @@ func enableCors(w* http.ResponseWriter) {
 	(*w).Header().Set("Access-Control-Allow-Origin", "*")
 }
 
-func main() {
-	consume()
+func createNewRecord(msg []byte) {
+	var newRecord record
+	err := json.Unmarshal(msg, &newRecord)
+
+	if err != nil {
+		panic(err.Error())
+	}
+
+	var newEmpleado empleado
+	for i := 0; i < len(newRecord.Empleados); i++ {
+		newEmpleado = newRecord.Empleados[i]
+
+		insert, err := db.Query("call addImage @imageName = 'imagen de prueba', @image = 'texto de prueba';
+		INSERT INTO EMPLEADO_EMOTIONS (create_time, name, emotion) VALUES ('" + fecha + "','" + newEmpleado.Nombre + "','" + newEmpleado.Emocion + "')")
+
+		if err != nil {
+			panic(err.Error())
+		}
+
+		fmt.Println("Insertado record bien")
+		defer insert.Close()
+	}
 }
 
-func consume() {
+func consume() {	
 
-	conn, err := amqp.Dial("amqp://emotion:emotion@" + rabbit_host + ":" + rabbit_port +"/")
+	conn, err := amqp.Dial("amqp://guest:guest@" + rabbit_host + ":" + rabbit_port +"/")
 
 	if err != nil {
 		log.Fatalf("%s: %s", "Failed to connect to RabbitMQ", err)
@@ -74,11 +94,15 @@ func consume() {
 	go func() {
 		for d := range msgs {
 			log.Printf("Received a message: %s", d.Body)
-			
-			d.Ack(false)
+			d.Ack(true)
+			createNewRecord(d.Body)
 		}
 	  }()
 	  
 	  fmt.Println("Running...")
 	  <-forever
+}
+
+func main() {
+	consume()
 }

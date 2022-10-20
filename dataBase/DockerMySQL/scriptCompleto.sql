@@ -1,3 +1,6 @@
+Create database imageAnalysis;
+use imageAnalysis;
+
 Create table images(
 	imageName varchar(40), 
 	dateAdded datetime, 
@@ -18,7 +21,6 @@ alter table results
 add constraint unique_NameResults
 unique (imageName);
 
---Functions
 DELIMITER &&
 CREATE PROCEDURE addImage(in image_Name varchar(40), in image_data text)
 BEGIN
@@ -68,10 +70,18 @@ BEGIN
 update results set results = image_results, dateModified = CURRENT_TIMESTAMP where imageName = image_Name;
 END&&
 
+DELIMITER &&
+CREATE PROCEDURE viewAll()
+BEGIN
+select image.imageName, results.results, results.dateModified, image.text
+from images
+inner join results on image.imageName = results.imageName;
+END&&
+
 /*
 select * from images;
 select * from results;
-execute addImage @imageName = 'imagen de prueba 2',@image = 'asdfsdfgsdffaser12341';
+
 execute updateImage @imageName = 'imagen de prueba 2',@image = 'imagen modificada';
 execute deleteImage @imageName = 'imagen de prueba 2';
 execute addResults @imageName = 'imagen de prueba 2',@results = 'esta feliz';
