@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: emotions-service
-        image: marivr12/emotion:v11 
+        image: marivr12/emotion:v11
         imagePullPolicy: Always
         ports:
         - containerPort: 3850
@@ -26,9 +26,9 @@ spec:
         - name: RABBIT_PORT
           value: "5672"
         - name: RABBIT_CONSUMER_QUEUE
-          value: "images_test"
-        - name: RABBIT_PRODUCER_QUEUE
-          value: "emotions"
+          value: "adding"
+        - name: RABBIT_ALL_IMAGES_QUEUE
+          value: "storage"
 ---
 apiVersion: v1
 kind: Service
